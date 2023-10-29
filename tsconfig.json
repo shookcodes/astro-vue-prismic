@@ -1,3 +1,20 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "types": [
+      "astro/client",
+      "@nuxt/types",
+      "@prismicio/types",
+      "@prismicio/vue",
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "~/*": [
+        "./*"
+      ]
+    }
+  }
 }

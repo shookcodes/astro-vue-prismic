@@ -1,16 +1,39 @@
 ---
+import { getSingle } from "../prismic";
+import SliceZone from "../slices/SliceZone.vue";
+import { components } from "../slices";
+// import PrismicRichText from "../components/fields/PrismicRichText.vue";
 
+const data = await getSingle("homepage");
+
+// console.log("TESt", data);
+
+// const { title, description } = data;
+
+// console.log("T", title, "\nDOC");
 ---
 
-<html lang="en">
+<html lang='en'>
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta charset='utf-8' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
 	</head>
+
 	<body>
-		<h1>Astro</h1>
+		<!-- <h1>
+			<PrismicRichText field={data.title} />
+		</h1>
+
+		<p>
+			<PrismicRichText field={data.description} />
+		</p> -->
+
+		{
+			data?.slices && data.slices.length > 0 && (
+				<SliceZone slices={data.slices} components={components} />
+			)
+		}
 	</body>
 </html>
