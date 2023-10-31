@@ -2,7 +2,7 @@
 	import {
 		SliceZone,
 		type SliceZoneComponents,
-		SliceLike,
+		type SliceLike,
 	} from "@prismicio/vue";
 	interface Props {
 		slices: SliceLike<string>[] | [];
