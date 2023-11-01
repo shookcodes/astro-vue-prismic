@@ -1,0 +1,26 @@
+---
+
+---
+
+<html>
+	<head>
+		<title>Preview route</title>
+	</head>
+	<body>
+		<h1>Loading Preview...</h1>
+	</body>
+</html>
+<script>
+	import { client } from "../prismic";
+
+	const init = async () => {
+		const defaultURL = "/";
+
+		const url = await client.resolvePreviewURL({
+			defaultURL,
+		});
+		window.location.replace(url);
+		console.log("WIN", window);
+	};
+	init();
+</script>

@@ -2,6 +2,7 @@
 import { getSingle } from "../prismic";
 import SliceZone from "../slices/SliceZone.vue";
 import { components } from "../slices";
+import PrismicPreview from "../layouts/PrismicPreview.astro";
 // import PrismicRichText from "../components/fields/PrismicRichText.vue";
 
 const data = await getSingle("homepage");
@@ -29,11 +30,12 @@ const data = await getSingle("homepage");
 		<p>
 			<PrismicRichText field={data.description} />
 		</p> -->
-
-		{
-			data?.slices && data.slices.length > 0 && (
-				<SliceZone slices={data.slices} components={components} />
-			)
-		}
+		<PrismicPreview>
+			{
+				data?.slices && data.slices.length > 0 && (
+					<SliceZone slices={data.slices} components={components} />
+				)
+			}
+		</PrismicPreview>
 	</body>
 </html>
