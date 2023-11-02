@@ -14,5 +14,5 @@ export default defineConfig({
 			template: "Vue", // Use the Vue template
 		},
 	},
-	exclude: ["**/pages/slices-simulator.vue"],
+	exclude: ["./src/pages/slices-simulator.vue"],
 });

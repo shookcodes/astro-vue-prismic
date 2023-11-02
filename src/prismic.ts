@@ -1,42 +1,15 @@
-import type { HomepageDocument } from "@/prismicio-types";
 import { createClient } from "@prismicio/client";
-import type {
-	// PrismicDocumentWithoutUID,
-	// PrismicDocumentWithUID,
-	PrismicDocument,
-} from "@prismicio/types";
-import { createPrismic } from "@prismicio/vue";
 
 export const client = createClient(
 	"https://astro-prismic-slicemachine.cdn.prismic.io/api/v2"
 );
 
-export const previewClient = createPrismic({
-	endpoint: "astro-prismic-slicemachine",
-});
+// Update with other Single type string names as new Single pages are created.
+export type DocumentType = "homepage";
 
-export type PrismicSingle = PrismicDocument<
-	Record<string, any>,
-	string,
-	string
->;
-
-export type PrismicSingleDocument = HomepageDocument;
-// export type PrismicSingle = "homepage";
-
-export const getSingle = async (documentType: "homepage") => {
+export const getSingle = async (documentType: DocumentType) => {
 	try {
 		const { data } = await client.getSingle(documentType);
-
-		return data;
-	} catch (error) {
-		return console.log(`Error fetching data: ${error}`);
-	}
-};
-
-export const getByID = async (documentId: string) => {
-	try {
-		const { data } = await client.getByID(documentId);
 
 		return data;
 	} catch (error) {
@@ -47,6 +20,16 @@ export const getByID = async (documentId: string) => {
 export const getByRef = async (ref: string) => {
 	try {
 		const { data } = await client.getFirst({ ref });
+		return data;
+	} catch (error) {
+		return console.log(`Error fetching data: ${error}`);
+	}
+};
+
+export const getByID = async (documentId: string) => {
+	try {
+		const { data } = await client.getByID(documentId);
+
 		return data;
 	} catch (error) {
 		return console.log(`Error fetching data: ${error}`);
