@@ -1,27 +1,15 @@
+---
+const { isPreview } = Astro.props || false;
+---
+
 <html>
 	<head>
-		<title>Astro Vue Prismic Starter</title>
+		<title>{isPreview ? "Preview:" : ""} Astro Vue Prismic Starter</title>
 		<meta charset='utf-8' />
 		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
-
-
-            <!-- <script type='module'>
-                import { client } from '../prismic.ts';
-
-                const init = async () => {
-                    const defaultURL = "/";
-
-                    const url = await client.resolvePreviewURL({
-                        defaultURL,
-                    });
-                    window.location.replace(url);
-
-                    console.log("PRV UR", url);
-                };
-                init();
-            </script> -->
+		<meta name='robots' content={`${isPreview ? "noindex" : "all"}`} />
 
 		<script
 			async

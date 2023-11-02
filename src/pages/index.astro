@@ -14,7 +14,7 @@ const data = previewCookie
 	: ((await getSingle("homepage" as DocumentType)) as HomepageDocumentData);
 ---
 
-<Layout>
+<Layout isPreview={previewCookie ? true : false}>
 	<!-- <h1>
 			<PrismicRichText field={data.title} />
 		</h1>
