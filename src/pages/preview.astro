@@ -1,5 +1,5 @@
 ---
-export const prerender = true;
+// export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 
 const SEO = {
@@ -24,9 +24,9 @@ const SEO = {
 				if (doc.isBroken) {
 					return "/404";
 				} else if (doc.type === "homepage") {
-					return `/preview/home`;
+					return `/`;
 				} else {
-					return `/preview/${doc.type}`;
+					return `/${doc.type}`;
 				}
 				// add more pages (a.k.a redirects) ...
 			},

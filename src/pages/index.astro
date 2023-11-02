@@ -6,7 +6,8 @@ import Layout from "../layouts/Layout.astro";
 import type { HomepageDocumentData } from "../../prismicio-types";
 // import PrismicPreview from "../layouts/PrismicPreview.astro";
 // import PrismicRichText from "../components/fields/PrismicRichText.vue";
-export const prerender = true;
+
+export const prerender = false;
 const previewCookie = Astro.cookies.get("io.prismic.preview")?.value;
 
 const data = previewCookie
