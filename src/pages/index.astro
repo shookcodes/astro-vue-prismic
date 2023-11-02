@@ -4,9 +4,9 @@ import SliceZone from "../slices/SliceZone.vue";
 import { components } from "../slices";
 import Layout from "../layouts/Layout.astro";
 import type { HomepageDocumentData } from "../../prismicio-types";
-import PrismicPreview from "../layouts/PrismicPreview.astro";
+// import PrismicPreview from "../layouts/PrismicPreview.astro";
 // import PrismicRichText from "../components/fields/PrismicRichText.vue";
-
+export const prerender = true;
 const previewCookie = Astro.cookies.get("io.prismic.preview")?.value;
 
 const data = previewCookie
