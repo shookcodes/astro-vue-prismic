@@ -1,26 +1,42 @@
 ---
+export const prerender = true;
+import Layout from "../layouts/Layout.astro";
 
+const SEO = {
+	title: "Preview",
+	description: "",
+};
 ---
 
-<html>
-	<head>
-		<title>Preview route</title>
-	</head>
-	<body>
-		<h1>Loading Preview...</h1>
-	</body>
-</html>
+<script
+	async
+	defer
+	src='https://static.cdn.prismic.io/prismic.js?new=true&repo=astro-prismic-slicemachine'
+></script>
+
 <script>
 	import { client } from "../prismic";
 
 	const init = async () => {
-		const defaultURL = "/";
-
+		const defaultUrl = "/";
 		const url = await client.resolvePreviewURL({
-			defaultURL,
+			linkResolver: (doc) => {
+				if (doc.isBroken) {
+					return "/404";
+				} else if (doc.type === "homepage") {
+					return `/preview/home`;
+				}
+				// add more pages (a.k.a redirects) ...
+				return defaultUrl;
+			},
+			defaultURL: defaultUrl,
 		});
 		window.location.replace(url);
-		console.log("WIN", window);
 	};
+
 	init();
 </script>
+
+<Layout title={SEO.title} description={SEO.description} disableIndex={true}>
+	<div>Loading the preview</div>
+</Layout>

@@ -5,10 +5,15 @@ import type {
 	// PrismicDocumentWithUID,
 	PrismicDocument,
 } from "@prismicio/types";
+import { createPrismic } from "@prismicio/vue";
 
 export const client = createClient(
 	"https://astro-prismic-slicemachine.cdn.prismic.io/api/v2"
 );
+
+export const previewClient = createPrismic({
+	endpoint: "astro-prismic-slicemachine",
+});
 
 export type PrismicSingle = PrismicDocument<
 	Record<string, any>,
@@ -23,6 +28,25 @@ export const getSingle = async (documentType: "homepage") => {
 	try {
 		const { data } = await client.getSingle(documentType);
 
+		return data;
+	} catch (error) {
+		return console.log(`Error fetching data: ${error}`);
+	}
+};
+
+export const getByID = async (documentId: string) => {
+	try {
+		const { data } = await client.getByID(documentId);
+
+		return data;
+	} catch (error) {
+		return console.log(`Error fetching data: ${error}`);
+	}
+};
+
+export const getByRef = async (ref: string) => {
+	try {
+		const { data } = await client.getFirst({ ref });
 		return data;
 	} catch (error) {
 		return console.log(`Error fetching data: ${error}`);
