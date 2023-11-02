@@ -4,8 +4,6 @@ import SliceZone from "../slices/SliceZone.vue";
 import { components } from "../slices";
 import Layout from "../layouts/Layout.astro";
 import type { HomepageDocumentData } from "../../prismicio-types";
-// import PrismicPreview from "../layouts/PrismicPreview.astro";
-// import PrismicRichText from "../components/fields/PrismicRichText.vue";
 
 export const prerender = false;
 const previewCookie = Astro.cookies.get("io.prismic.preview")?.value;
@@ -16,18 +14,9 @@ const data = previewCookie
 ---
 
 <Layout isPreview={previewCookie ? true : false}>
-	<!-- <h1>
-			<PrismicRichText field={data.title} />
-		</h1>
-
-		<p>
-			<PrismicRichText field={data.description} />
-		</p> -->
-	<!-- <PrismicPreview> -->
 	{
 		data?.slices && data.slices.length > 0 && (
 			<SliceZone slices={data.slices} components={components} />
 		)
 	}
-	<!-- </PrismicPreview> -->
 </Layout>
