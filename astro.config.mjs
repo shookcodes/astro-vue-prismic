@@ -8,11 +8,4 @@ export default defineConfig({
 	output: "hybrid",
 	adapter: vercel(),
 	integrations: [vue(), tailwind()],
-	pages: {
-		"**/*.vue": {
-			// Page configuration for Vue files
-			template: "Vue", // Use the Vue template
-		},
-	},
-	exclude: ["./src/pages/slices-simulator.vue"],
 });
