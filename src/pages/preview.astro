@@ -25,9 +25,10 @@ const SEO = {
 					return "/404";
 				} else if (doc.type === "homepage") {
 					return `/preview/home`;
+				} else {
+					return `/preview/${doc.type}`;
 				}
 				// add more pages (a.k.a redirects) ...
-				return defaultUrl;
 			},
 			defaultURL: defaultUrl,
 		});

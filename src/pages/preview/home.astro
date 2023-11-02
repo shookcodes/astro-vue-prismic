@@ -5,7 +5,7 @@ import { components } from "../../slices";
 import Layout from "../../layouts/Layout.astro";
 import PrismicPreview from "../../layouts/PrismicPreview.astro";
 
-export const prerender = false;
+export const prerender = true;
 
 const previewCookie = Astro.cookies.get("io.prismic.preview")?.value;
 
@@ -15,7 +15,7 @@ if (!previewCookie) {
 const data: any = await getByRef(previewCookie);
 ---
 
-<Layout>
+<Layout isPreview='true'>
 	<PrismicPreview>
 		{
 			data?.slices && data.slices.length > 0 && (
